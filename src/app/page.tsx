@@ -1,65 +1,101 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+import Image from "next/image";
+import Link from "next/link";
+
+
+export default function Login() {
+	return (
+		<section className="_social_login_wrapper _layout_main_wrapper">
+			<div className="_shape_one">
+				<Image src="/assets/images/shape1.svg" width={200} height={200} alt="Decorative Shape 1" className="_shape_Image"/>
+				<Image src="/assets/images/dark_shape.svg" width={200} height={200} alt="Decorative Shape Dark 1" className="_dark_shape"/>
+			</div>
+			<div className="_shape_two">
+				<Image src="/assets/images/shape2.svg" width={200} height={200} alt="" className="_shape_Image"/>
+				<Image src="/assets/images/dark_shape1.svg" width={200} height={200} alt="" className="_dark_shape _dark_shape_opacity"/>
+			</div>
+			<div className="_shape_three">
+				<Image src="/assets/images/shape3.svg" width={200} height={200} alt="" className="_shape_Image"/>
+				<Image src="/assets/images/dark_shape2.svg" width={200} height={200} alt="" className="_dark_shape _dark_shape_opacity"/>
+			</div>
+			<div className="_social_login_wrap">
+				<div className="container">
+					<div className="row align-items-center">
+						<div className="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+							<div className="_social_login_left">
+								<div className="_social_login_left_image">
+									<Image src="/assets/images/login.png" width={633} height={633}  alt="Image" className="_left_img"/>
+								</div>
+							</div>
+						</div>
+						<div className="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+							<div className="_social_login_content">
+								<div className="_social_login_left_logo _mar_b28">
+									<Image src="/assets/images/logo.svg" width={200} height={200} alt="Image" className="_left_logo"/>
+								</div>
+								<p className="_social_login_content_para _mar_b8">Welcome back</p>
+								<h4 className="_social_login_content_title _titl4 _mar_b50">Login to your account</h4>
+								<button type="button" className="_social_login_content_btn _mar_b40">
+									<Image src="/assets/images/google.svg" alt="Image" width={200} height={200} className="_google_Image"/> <span>Or sign-in with google</span>
+								</button>
+								<div className="_social_login_content_bottom_txt _mar_b40"><span>Or</span>
+								</div>
+								<form className="_social_login_form">
+									<div className="row">
+										<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+											<div className="_social_login_form_input _mar_b14">
+												<label className="_social_login_label _mar_b8">Email</label>
+												<input type="email" className="form-control _social_login_input"/>
+											</div>
+										</div>
+										<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+											<div className="_social_login_form_input _mar_b14">
+												<label className="_social_login_label _mar_b8">Password</label>
+												<input type="password" className="form-control _social_login_input"/>
+											</div>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+											<div className="form-check _social_login_form_check">
+												<input className="form-check-input _social_login_form_check_input"
+												       type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+												       defaultChecked={true} />
+												<label className="form-check-label _social_login_form_check_label"
+												       htmlFor="flexRadioDefault2">Remember me</label>
+											</div>
+										</div>
+										<div className="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+											<div className="_social_login_form_left">
+												<p className="_social_login_form_left_para">Forgot password?</p>
+											</div>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col-lg-12 col-md-12 col-xl-12 col-sm-12">
+											<div className="_social_login_form_btn _mar_t40 _mar_b60">
+												<button type="button" className="_social_login_form_btn_link _btn1">Login
+													now
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<div className="row">
+									<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+										<div className="_social_login_bottom_txt">
+											<p className="_social_login_bottom_txt_para">
+												Dont have an account? <Link href={'/register'}>Create New Account</Link>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }
