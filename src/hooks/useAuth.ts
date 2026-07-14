@@ -29,11 +29,14 @@ export function useAuth() {
 	
 	// Login mutation
 	const loginMutation = useMutation({
-		mutationFn: (credentials: LoginCredentials) => loginUser(credentials),
+		mutationFn: (credentials: LoginCredentials) => {
+			console.log('🔥 mutationFn called:', credentials)
+			return loginUser(credentials)
+		},
 		onSuccess: async (user) => {
 			setAuth(user);
 			await queryClient.invalidateQueries({ queryKey: ['auth-user'] });
-			router.push('/feed');
+			// router.push('/feed');
 		},
 		onError: (error: any) => {
 			console.log('loginMutation error: ' + error.message);

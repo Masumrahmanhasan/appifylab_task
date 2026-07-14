@@ -1,13 +1,17 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { cookies } from 'next/headers';
+import https from 'https'
 
 const apiClient = axios.create({
-	baseURL: process.env.LARAVEL_API_URL,
+	baseURL: 'https://appifylab_backend.test/api/v1',
 	headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json',
 	},
-	timeout: 15000
+	timeout: 15000,
+	httpsAgent: new https.Agent({
+		rejectUnauthorized: false, // ✅ dev: allow self-signed
+	}),
 })
 
 apiClient.interceptors.request.use(
@@ -29,9 +33,7 @@ apiClient.interceptors.response.use(
 	  if (error.response?.status === 401) {
 		  const cookieStore = await cookies();
 		  cookieStore.delete('auth_token');
-		if (typeof window !== 'undefined') {
-		  window.location.href = '/login';
-		}
+		  throw new Error('Unauthorized');
 	  }
 	  return Promise.reject(error);
 	}
