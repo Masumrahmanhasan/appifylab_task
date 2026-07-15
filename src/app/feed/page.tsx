@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import {Header} from "@/components/feed/Header";
 import Link from "next/link";
@@ -5,12 +6,13 @@ import {LeftSidebar} from "@/components/feed/LeftSidebar";
 import {RightSidebar} from "@/components/feed/RightSidebar";
 import {Stories} from "@/components/feed/Stories";
 import {Post} from "@/components/feed/Post";
-import {getPosts} from "@/api/posts";
 import {CreatePost} from "@/components/feed/CreatePost";
+import {useFeed} from "@/hooks/useFeed";
 
-export default async function Feed() {
-	const postsData = await getPosts();
-	const posts = postsData.data || [];
+export default function Feed() {
+	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useFeed();
+	
+	const posts = data?.pages.flatMap((page) => page.data.data) || [];
 	return (
 		<div className="_layout _layout_main_wrapper">
 			<div className="_layout_mode_swithing_btn">
@@ -48,9 +50,26 @@ export default async function Feed() {
 									<div className="_layout_middle_inner">
 										<Stories/>
 										<CreatePost/>
-										{posts.map((post) => (
-											<Post key={post.id} post={post} />
-										))}
+										{isLoading ? (
+											<div className="text-center py-4">Loading posts...</div>
+										) : (
+											<>
+												{posts.map((post) => (
+													<Post key={post.id} post={post} />
+												))}
+												{hasNextPage && (
+													<div className="text-center py-4">
+														<button 
+															onClick={() => fetchNextPage()}
+															disabled={isFetchingNextPage}
+															className="btn btn-primary"
+														>
+															{isFetchingNextPage ? 'Loading more...' : 'Load More'}
+														</button>
+													</div>
+												)}
+											</>
+										)}
 									</div>
 								</div>
 							</div>
