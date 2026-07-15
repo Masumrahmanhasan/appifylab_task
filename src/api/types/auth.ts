@@ -3,7 +3,6 @@ export interface User {
 	first_name: string;
 	last_name: string;
 	email: string;
-	avatar?: string;
 	created_at: string;
 	updated_at: string;
 }
@@ -21,6 +20,7 @@ export interface RegisterCredentials {
 }
 
 export interface AuthResponse {
-	user: User;
-	token: string;
+	data: {
+		token: string;
+	};
 }

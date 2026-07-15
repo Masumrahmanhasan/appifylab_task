@@ -16,15 +16,19 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
 	async (config: InternalAxiosRequestConfig) => {
+		if (config.headers.Authorization) {
+			return config;
+		}
+		
 		const cookieStore = await cookies();
 		const token = cookieStore.get('auth_token')?.value;
-	  if (token) {
-		config.headers.Authorization = `Bearer ${token}`;
-	  }
-	  return config;
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
 	},
 	(error) => Promise.reject(error)
-  );
+);
 
   // Response interceptor - handle 401
 apiClient.interceptors.response.use(

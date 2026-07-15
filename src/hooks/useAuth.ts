@@ -36,7 +36,7 @@ export function useAuth() {
 		onSuccess: async (user) => {
 			setAuth(user);
 			await queryClient.invalidateQueries({ queryKey: ['auth-user'] });
-			// router.push('/feed');
+			router.push('/feed');
 		},
 		onError: (error: any) => {
 			console.log('loginMutation error: ' + error.message);

@@ -21,13 +21,18 @@ async function setAuthCookie(token: string) {
 
 // Internal helper to handle auth response (extract token and set cookie)
 async function handleAuthResponse(data: AuthResponse): Promise<User> {
-	await setAuthCookie(data.token);
-	return data.user;
+	console.log('auth_token: ' + data.data.token);
+	await setAuthCookie(data.data.token);
+	const user = await getCurrentUser(data.data.token);
+	if (!user) {
+		throw new Error('Failed to fetch user data after authentication');
+	}
+	return user;
 }
 
 
 export async function loginUser(credentials: LoginCredentials): Promise<User> {
-	console.log('loginUser called with:', credentials);
+	
 	const { data } = await apiClient.post('/auth/login', credentials);
 	if (data.status === 'error') {
 		throw data;
@@ -53,9 +58,14 @@ export async function logoutUser(): Promise<void> {
 	cookieStore.delete('auth_token');
 }
 
-export async function getCurrentUser(): Promise<User | null> {
+export async function getCurrentUser(token?: string): Promise<User | null> {
 	try {
-		const { data } = await apiClient.get('/auth/user');
+		const headers: Record<string, string> = {};
+		if (token) {
+			headers['Authorization'] = `Bearer ${token}`;
+		}
+		// Because we set headers.Authorization, the interceptor will skip reading cookies
+		const { data } = await apiClient.get('/user', { headers });
 		return data;
 	} catch {
 		return null;
