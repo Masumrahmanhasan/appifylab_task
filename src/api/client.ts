@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import https from 'https'
 
 const apiClient = axios.create({
-	baseURL: 'https://appifylab_backend.test/api/v1',
+	baseURL: process.env.LARAVEL_API_URL,
 	headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json',

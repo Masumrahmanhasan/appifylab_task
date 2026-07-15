@@ -1,4 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{}</component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d48f7195-eb1d-4928-b628-9f0457291ef3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-workspace.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/feed/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/feed/page.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="140" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.328717990970985E-70" />
+      <entry key="S2" value="4.308700272137409E-18" />
+      <entry key="S5" value="1.297925136036129E-7" />
+      <entry key="S10" value="4.7671206086478707E-4" />
+      <entry key="S30" value="0.15875582485241452" />
+      <entry key="S60" value="0.974694332647421" />
+      <entry key="M2" value="3.675802604764785" />
+      <entry key="M5" value="12.155151291640708" />
+      <entry key="M10" value="20.564917875180857" />
+      <entry key="M15" value="24.974421234506032" />
+      <entry key="M30" value="30.64313655188758" />
+      <entry key="H1" value="34.07807641959277" />
+      <entry key="H2" value="35.97351433609918" />
+      <entry key="H4" value="36.969753055623414" />
+      <entry key="D1" value="37.825875531433404" />
+      <entry key="W1" value="37.97506516168223" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.000010494551225" />
+      <entry key="MS500" value="1.100970097201201" />
+      <entry key="S2" value="1.563702433382491" />
+      <entry key="S5" value="1.8030080965834405" />
+      <entry key="S10" value="2.017229363007667" />
+      <entry key="S30" value="3.010271504615787" />
+      <entry key="S60" value="4.469109983379807" />
+      <entry key="M2" value="6.901424770278192" />
+      <entry key="M5" value="11.373929436606037" />
+      <entry key="M10" value="14.591783431564672" />
+      <entry key="M15" value="16.073699596555727" />
+      <entry key="M30" value="17.849800668987776" />
+      <entry key="H1" value="18.87220766765691" />
+      <entry key="H2" value="19.422092598621074" />
+      <entry key="H4" value="19.70743194410493" />
+      <entry key="D1" value="19.950726860422126" />
+      <entry key="W1" value="19.992948316097436" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.0013066114443212047" />
+      <entry key="MS500" value="0.2983883830746644" />
+      <entry key="S2" value="1.1449776262996996" />
+      <entry key="S5" value="1.5946788538023837" />
+      <entry key="S10" value="1.8998040539985195" />
+      <entry key="S30" value="3.110051982262457" />
+      <entry key="S60" value="5.392746524066984" />
+      <entry key="M2" value="10.52470747770717" />
+      <entry key="M5" value="23.478787015679615" />
+      <entry key="M10" value="35.117486847695034" />
+      <entry key="M15" value="41.01705572386694" />
+      <entry key="M30" value="48.47422967518317" />
+      <entry key="H1" value="52.93996493825812" />
+      <entry key="H2" value="55.39018044296765" />
+      <entry key="H4" value="56.67440152837464" />
+      <entry key="D1" value="57.77612841459695" />
+      <entry key="W1" value="57.96794551607205" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3GXSoKOJOkiamfrJEcax5MBmWLW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "D:/Herd/appifylab_task",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "ts.external.directory.path": "D:\\Herd\\appifylab_task\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.26222.58" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d48f7195-eb1d-4928-b628-9f0457291ef3" name="Changes" comment="" />
+      <created>1784116596693</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1784116596693</updated>
+      <workItem from="1784116604090" duration="2947000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
 </project>
