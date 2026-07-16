@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import  './globals.css'
 import React from "react";
 import {QueryProvider} from '@/components/providers/QueryProvider'
+import { Toaster } from 'react-hot-toast';
 const poppins = Poppins({
 	subsets: ["latin"],
 	weight: ["100", "300", "400", "500", "600", "700", "800"], // all weights you need
@@ -29,6 +30,7 @@ export default function RootLayout({
 				<QueryProvider>
 					{children}
 				</QueryProvider>
+				<Toaster position="top-right"/>
 			</body>
 		</html>
 	);

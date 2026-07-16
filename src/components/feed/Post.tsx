@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Post as PostType } from "@/api/types/post";
 import { useState } from "react";
+import Avatar from "next-avatar";
 
 interface PostProps {
     post: PostType;
@@ -9,6 +10,7 @@ interface PostProps {
 
 export function Post({ post }: PostProps) {
     const [replyToCommentId, setReplyToCommentId] = useState<number | null>(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
         <div className="_feed_inner_timeline_post_area _b_radious6 _padd_b24 _padd_t24 _mar_b16">
@@ -16,10 +18,10 @@ export function Post({ post }: PostProps) {
                 <div className="_feed_inner_timeline_post_top">
                     <div className="_feed_inner_timeline_post_box">
                         <div className="_feed_inner_timeline_post_box_image">
-                            <Image width={500} height={500} src={post.user.avatar || "/assets/images/post_img.png"} alt="" className="_post_img" />
+                            <Avatar name={post.user.first_name + ' ' + post.user.last_name} size={60} />
                         </div>
                         <div className="_feed_inner_timeline_post_box_txt">
-                            <h4 className="_feed_inner_timeline_post_box_title">{post.user.name}</h4>
+                            <h4 className="_feed_inner_timeline_post_box_title">{post.user.first_name} {post.user.last_name}</h4>
                             <p className="_feed_inner_timeline_post_box_para" suppressHydrationWarning>{new Date(post.created_at).toLocaleString()} .
                                 <a href="#0">Public</a>
                             </p>
@@ -27,7 +29,11 @@ export function Post({ post }: PostProps) {
                     </div>
                     <div className="_feed_inner_timeline_post_box_dropdown">
                         <div className="_feed_timeline_post_dropdown">
-                            <button  id="_timeline_show_drop_btn" className="_feed_timeline_post_dropdown_link">
+                            <button 
+                                id="_timeline_show_drop_btn" 
+                                className="_feed_timeline_post_dropdown_link"
+                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="17" fill="none" viewBox="0 0 4 17">
                                     <circle cx="2" cy="2" r="2" fill="#C4C4C4" />
                                     <circle cx="2" cy="8" r="2" fill="#C4C4C4" />
@@ -35,25 +41,26 @@ export function Post({ post }: PostProps) {
                                 </svg>
                             </button>
                         </div>
-                        <div id="_timeline_drop" className="_feed_timeline_dropdown _timeline_dropdown">
+                        
+                        <div id="_timeline_drop" className={`_feed_timeline_dropdown _timeline_dropdown ${isDropdownOpen ? 'show' : ''}`}>
                             <ul className="_feed_timeline_dropdown_list">
                                 <li className="_feed_timeline_dropdown_item">
                                     <a href="#0" className="_feed_timeline_dropdown_link">
-																	<span>
-																		<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
-																			<path stroke="#1890FF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M14.25 15.75L9 12l-5.25 3.75v-12a1.5 1.5 0 011.5-1.5h7.5a1.5 1.5 0 011.5 1.5v12z"/>
-																		</svg>
-																	</span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="#1890FF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M14.25 15.75L9 12l-5.25 3.75v-12a1.5 1.5 0 011.5-1.5h7.5a1.5 1.5 0 011.5 1.5v12z"/>
+                                            </svg>
+                                        </span>
                                         Save Post
                                     </a>
                                 </li>
                                 <li className="_feed_timeline_dropdown_item">
                                     <a href="#0" className="_feed_timeline_dropdown_link">
-																	<span>
-																		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="none" viewBox="0 0 20 22">
-																			<path fill="#377DFF" fillRule="evenodd" d="M7.547 19.55c.533.59 1.218.915 1.93.915.714 0 1.403-.324 1.938-.916a.777.777 0 011.09-.056c.318.284.344.77.058 1.084-.832.917-1.927 1.423-3.086 1.423h-.002c-1.155-.001-2.248-.506-3.077-1.424a.762.762 0 01.057-1.083.774.774 0 011.092.057zM9.527 0c4.58 0 7.657 3.543 7.657 6.85 0 1.702.436 2.424.899 3.19.457.754.976 1.612.976 3.233-.36 4.14-4.713 4.478-9.531 4.478-4.818 0-9.172-.337-9.528-4.413-.003-1.686.515-2.544.973-3.299l.161-.27c.398-.679.737-1.417.737-2.918C1.871 3.543 4.948 0 9.528 0zm0 1.535c-3.6 0-6.11 2.802-6.11 5.316 0 2.127-.595 3.11-1.12 3.978-.422.697-.755 1.247-.755 2.444.173 1.93 1.455 2.944 7.986 2.944 6.494 0 7.817-1.06 7.988-3.01-.003-1.13-.336-1.681-.757-2.378-.526-.868-1.12-1.851-1.12-3.978 0-2.514-2.51-5.316-6.111-5.316z" clipRule="evenodd"/>
-																		</svg>
-																	</span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="none" viewBox="0 0 20 22">
+                                                <path fill="#377DFF" fillRule="evenodd" d="M7.547 19.55c.533.59 1.218.915 1.93.915.714 0 1.403-.324 1.938-.916a.777.777 0 011.09-.056c.318.284.344.77.058 1.084-.832.917-1.927 1.423-3.086 1.423h-.002c-1.155-.001-2.248-.506-3.077-1.424a.762.762 0 01.057-1.083.774.774 0 011.092.057zM9.527 0c4.58 0 7.657 3.543 7.657 6.85 0 1.702.436 2.424.899 3.19.457.754.976 1.612.976 3.233-.36 4.14-4.713 4.478-9.531 4.478-4.818 0-9.172-.337-9.528-4.413-.003-1.686.515-2.544.973-3.299l.161-.27c.398-.679.737-1.417.737-2.918C1.871 3.543 4.948 0 9.528 0zm0 1.535c-3.6 0-6.11 2.802-6.11 5.316 0 2.127-.595 3.11-1.12 3.978-.422.697-.755 1.247-.755 2.444.173 1.93 1.455 2.944 7.986 2.944 6.494 0 7.817-1.06 7.988-3.01-.003-1.13-.336-1.681-.757-2.378-.526-.868-1.12-1.851-1.12-3.978 0-2.514-2.51-5.316-6.111-5.316z" clipRule="evenodd"/>
+                                            </svg>
+                                        </span>
                                         Turn On Notification
                                     </a>
                                 </li>
@@ -101,12 +108,13 @@ export function Post({ post }: PostProps) {
             </div>
             <div className="_feed_inner_timeline_total_reacts _padd_r24 _padd_l24 _mar_b26">
                 <div className="_feed_inner_timeline_total_reacts_image">
-                    <Image width={500} height={500} src="/assets/images/react_img1.png" alt="Image" className="_react_img1" />
-                    <Image width={500} height={500} src="/assets/images/react_img2.png" alt="Image" className="_react_img" />
-                    <Image width={500} height={500} src="/assets/images/react_img3.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                    <Image width={500} height={500} src="/assets/images/react_img4.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                    <Image width={500} height={500} src="/assets/images/react_img5.png" alt="Image" className="_react_img _rect_img_mbl_none" />
-                    <p className="_feed_inner_timeline_total_reacts_para">{post.reactions?.likes || 0}+</p>
+                    {post.likes?.map((user: any) => (
+                        <Avatar key={user.id} name={user.first_name + ' ' + user.last_name} size={37} />
+                    ))}
+                    {post.likes_count > 0 && (
+                        <p className="_feed_inner_timeline_total_reacts_para">{post.likes_count || 0}+</p>
+                    )}
+                    
                 </div>
                 <div className="_feed_inner_timeline_total_reacts_txt">
                     <p className="_feed_inner_timeline_total_reacts_para1">
@@ -185,7 +193,7 @@ export function Post({ post }: PostProps) {
                         <div className="_comment_main" key={comment.id}>
                             <div className="_comment_image">
                                 <a href="profile.html" className="_comment_image_link">
-                                    <Image width={500} height={500} src={comment.user.avatar || "/assets/images/txt_img.png"} alt="" className="_comment_img1" />
+                                    <Avatar name={comment.user.first_name + ' ' + comment.user.last_name} size={60} />
                                 </a>
                             </div>
                             <div className="_comment_area">
@@ -193,7 +201,7 @@ export function Post({ post }: PostProps) {
                                     <div className="_comment_details_top">
                                         <div className="_comment_name">
                                             <a href="profile.html ">
-                                                <h4 className="_comment_name_title">{comment.user.name}</h4>
+                                                <h4 className="_comment_name_title">{comment.user.first_name}</h4>
                                             </a>
                                         </div>
                                     </div>

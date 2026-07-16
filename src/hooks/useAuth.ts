@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth-store';
 import { loginUser, registerUser, logoutUser, getCurrentUser } from '@/api/auth';
 import {LoginCredentials, RegisterCredentials} from "@/api/types/auth";
+import toast from "react-hot-toast";
 
 export function useAuth() {
 	const router = useRouter();
@@ -39,7 +40,8 @@ export function useAuth() {
 			router.push('/feed');
 		},
 		onError: (error: any) => {
-			console.log('loginMutation error: ' + error.message);
+			toast.error(error.message)
+			console.log('loginMutation error: ', error.response);
 		},
 	});
 	

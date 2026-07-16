@@ -35,7 +35,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
 	
 	const { data } = await apiClient.post('/auth/login', credentials);
 	if (data.status === 'error') {
-		throw data;
+		throw new Error(data.message);
 	}
 	return handleAuthResponse(data)
 }
@@ -66,7 +66,7 @@ export async function getCurrentUser(token?: string): Promise<User | null> {
 		}
 		// Because we set headers.Authorization, the interceptor will skip reading cookies
 		const { data } = await apiClient.get('/user', { headers });
-		return data;
+		return data.data;
 	} catch {
 		return null;
 	}

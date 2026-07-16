@@ -5,9 +5,11 @@ export interface Post {
   image_path?: string;
   created_at: string;
   updated_at: string;
+  likes_count: number;
   user: {
     id: number;
-    name: string;
+    first_name: string;
+    last_name: string;
     email: string;
     avatar?: string;
   };
@@ -16,6 +18,7 @@ export interface Post {
     comments: number;
     shares: number;
   };
+  likes?: Likes[];
   comments?: Comment[];
 }
 
@@ -28,12 +31,21 @@ export interface Comment {
   updated_at: string;
   user: {
     id: number;
-    name: string;
-    avatar?: string;
+    first_name: string;
+    last_name: string;
   };
+}
+
+export interface Likes {
+  id: number;
+  user: {
+    first_name: string;
+    last_name: string;
+  }
 }
 
 export interface CreatePostData {
   content: string;
-  image?: string;
+  image?: File | string;
+  is_private?: boolean;
 }

@@ -1,7 +1,8 @@
 'use client'
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { getPosts } from '@/api/posts';
-import { Post } from '@/api/types/post';
+import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getPosts, createPost } from '@/api/posts';
+import { Post, CreatePostData } from '@/api/types/post';
+import toast from 'react-hot-toast';
 
 interface FeedResponse {
   success: boolean;
@@ -39,4 +40,24 @@ export function useFeed() {
       return undefined;
     },
   });
+}
+
+export function usePost() {
+  const queryClient = useQueryClient();
+
+  const createPostMutation = useMutation({
+    mutationFn: (postData: CreatePostData) => createPost(postData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      toast.success('Post created successfully');
+    },
+    onError: (error: any) => {
+      toast.error(error.message || 'Failed to create post');
+    },
+  });
+
+  return {
+    createPost: createPostMutation.mutate,
+    isCreating: createPostMutation.isPending,
+  };
 }

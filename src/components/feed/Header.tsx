@@ -1,5 +1,11 @@
 import Image from 'next/image';
+import {useState} from "react";
+import {useAuthStore} from "@/store/auth-store";
+
 export function Header() {
+	const [profileDropdown, setProfileDropdown] = useState(false)
+	const { user } = useAuthStore();
+	
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light _header_nav _padd_t10">
 			<div className="container _custom_container">
@@ -462,8 +468,8 @@ export function Header() {
 						<div className="_header_nav_profile_image">
 							<Image width={500} height={500} src="/assets/images/profile.png" alt="Image" className="_nav_profile_img"/>
 						</div>
-						<div className="_header_nav_dropdown">
-							<p className="_header_nav_para">Dylan Field</p>
+						<div className="_header_nav_dropdown" onClick={() => setProfileDropdown(!profileDropdown)}>
+							<p className="_header_nav_para">{user?.first_name} {user?.last_name}</p>
 							<button id="_profile_drop_show_btn"
 							        className="_header_nav_dropdown_btn _dropdown_toggle" type="button">
 								<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" fill="none"
@@ -474,7 +480,7 @@ export function Header() {
 							</button>
 						</div>
 						
-						<div id="_prfoile_drop" className="_nav_profile_dropdown _profile_dropdown">
+						<div id="_prfoile_drop" className={`_nav_profile_dropdown _profile_dropdown ${profileDropdown ? 'show' : ''}`}>
 							<div className="_nav_profile_dropdown_info">
 								<div className="_nav_profile_dropdown_image">
 									<Image width={500} height={500} src="/assets/images/profile.png" alt="Image" className="_nav_drop_img"/>

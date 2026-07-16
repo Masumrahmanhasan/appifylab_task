@@ -8,9 +8,11 @@ import {Stories} from "@/components/feed/Stories";
 import {Post} from "@/components/feed/Post";
 import {CreatePost} from "@/components/feed/CreatePost";
 import {useFeed} from "@/hooks/useFeed";
+import {useAuth} from "@/hooks/useAuth";
 
 export default function Feed() {
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useFeed();
+	const {user} = useAuth();
 	
 	const posts = data?.pages.flatMap((page) => page.data.data) || [];
 	return (
